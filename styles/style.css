@@ -118,7 +118,6 @@
   padding: 0;
   background-color: inherit;
   border: none;
-  position: relative;
   transition: opacity 0.3s ease;
 }
 
@@ -198,8 +197,15 @@ img {
   position: absolute;
   top: 25px;
   right: 13px;
-  -webkit-text-stroke: 0.3px var(--border-color);
   mix-blend-mode: hard-light;
+}
+
+@supports (-webkit-text-stroke: 0.3px var(--border-color)) or
+  (text-stroke: 0.3px var(--border-color)) {
+  .card__label {
+    -webkit-text-stroke: 0.3px var(--border-color);
+    text-stroke: 0.3px var(--border-color); /* Для поддержки других браузеров */
+  }
 }
 
 .article {

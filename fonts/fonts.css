@@ -9,7 +9,8 @@
 /* Подключение вариативного Inter */
 @font-face {
   font-family: "Inter";
-  src: url("../fonts/Inter-Variable.woff2") format("woff2");
+  src: url("../fonts/Inter-Variable.woff2") format("woff2"),
+    url("../fonts/Inter-Variable.woff2-variations") format("woff2-variations");
   font-weight: 400 785; /* Диапазон от 100 до 900 */
   font-style: normal;
   font-display: swap;
