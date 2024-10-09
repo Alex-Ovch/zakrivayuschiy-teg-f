@@ -59,6 +59,7 @@
     --bg-gradient-color1: #007f0c;
     --bg-gradient-color2: #004306;
     --stripe-color: #000;
+    --stripe-transparent: rgba(0, 0, 0, 0);
     --border-color: rgba(255, 255, 255, 0.6);
   }
 }

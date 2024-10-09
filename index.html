@@ -59,8 +59,8 @@
           Фритрек и нулевой спринт: Подготовка к работе
         </h3>
         <div class="image__container">
-          <img src="./images/image-html.png" alt="Машинка" />
           <div class="card__label">&lt;/HTML&gt;</div>
+          <img src="./images/image-html.png" alt="Машинка" />
         </div>
 
         <article class="article">
@@ -71,8 +71,8 @@
           </p>
           <p>Место для ваших воспоминаний о начале обучения.</p>
         </article>
-        <div class="like">
-          <button type="button" class="card__like-button">
+        <div class="card__button-container">
+          <button type="button" class="card__icon-button">
             <svg
               class="like-icon"
               width="39"
@@ -106,7 +106,8 @@
                 fill="var(--spark-fill)"
               />
             </svg>
-
+          </button>
+          <button type="button" class="card__like-button">
             <span class="button__text">Like</span>
           </button>
         </div>
@@ -129,8 +130,8 @@
         </p>
         <p>Место для ваших воспоминаний о начале первого спринта.</p>
       </article>
-      <div class="like">
-        <button type="button" class="card__like-button">
+      <div class="card__button-container">
+        <button type="button" class="card__icon-button">
           <svg
             class="like-icon"
             width="39"
@@ -164,7 +165,8 @@
               fill="var(--spark-fill)"
             />
           </svg>
-
+        </button>
+        <button type="button" class="card__like-button">
           <span class="button__text">Like</span>
         </button>
       </div>
@@ -184,8 +186,8 @@
         </p>
         <p>Место для ваших воспоминаний об окончании первого спринта.</p>
       </article>
-      <div class="like">
-        <button type="button" class="card__like-button">
+      <div class="card__button-container">
+        <button type="button" class="card__icon-button">
           <svg
             class="like-icon"
             width="39"
@@ -219,7 +221,8 @@
               fill="var(--spark-fill)"
             />
           </svg>
-
+        </button>
+        <button type="button" class="card__like-button">
           <span class="button__text">Like</span>
         </button>
       </div>
@@ -241,8 +244,8 @@
         </p>
         <p>Место для ваших воспоминаний о начале второго спринта.</p>
       </article>
-      <div class="like">
-        <button type="button" class="card__like-button">
+      <div class="card__button-container">
+        <button type="button" class="card__icon-button">
           <svg
             class="like-icon"
             width="39"
@@ -276,7 +279,8 @@
               fill="var(--spark-fill)"
             />
           </svg>
-
+        </button>
+        <button type="button" class="card__like-button">
           <span class="button__text">Like</span>
         </button>
       </div>
@@ -298,8 +302,8 @@
         </p>
         <p>Место для ваших воспоминаний об окончании второго спринта.</p>
       </article>
-      <div class="like">
-        <button type="button" class="card__like-button">
+      <div class="card__button-container">
+        <button type="button" class="card__icon-button">
           <svg
             class="like-icon"
             width="39"
@@ -333,7 +337,8 @@
               fill="var(--spark-fill)"
             />
           </svg>
-
+        </button>
+        <button type="button" class="card__like-button">
           <span class="button__text">Like</span>
         </button>
       </div>
@@ -353,8 +358,8 @@
         </p>
         <p>Место для ваших воспоминаний о начале третьего спринта.</p>
       </article>
-      <div class="like">
-        <button type="button" class="card__like-button">
+      <div class="card__button-container">
+        <button type="button" class="card__icon-button">
           <svg
             class="like-icon"
             width="39"
@@ -388,7 +393,8 @@
               fill="var(--spark-fill)"
             />
           </svg>
-
+        </button>
+        <button type="button" class="card__like-button">
           <span class="button__text">Like</span>
         </button>
       </div>
@@ -409,8 +415,8 @@
         </p>
         <p>Место для ваших воспоминаний об окончании третьего спринта.</p>
       </article>
-      <div class="like">
-        <button type="button" class="card__like-button">
+      <div class="card__button-container">
+        <button type="button" class="card__icon-button">
           <svg
             class="like-icon"
             width="39"
@@ -444,7 +450,8 @@
               fill="var(--spark-fill)"
             />
           </svg>
-
+        </button>
+        <button type="button" class="card__like-button">
           <span class="button__text">Like</span>
         </button>
       </div>
@@ -474,8 +481,8 @@
           этой точке пути.
         </p>
       </article>
-      <div class="like">
-        <button type="button" class="card__like-button">
+      <div class="card__button-container">
+        <button type="button" class="card__icon-button">
           <svg
             class="like-icon"
             width="39"
@@ -509,31 +516,30 @@
               fill="var(--spark-fill)"
             />
           </svg>
-
+        </button>
+        <button type="button" class="card__like-button">
           <span class="button__text">Like</span>
         </button>
       </div>
     </section>
 
-    <footer class="footer">
-      <div class="card__icon-button">
-        <svg class="icon" width="28" height="28">
-          <use xlink:href="#icon-disk"></use>
+    <div class="card__like-button">
+      <button
+        type="button"
+        onclick="window['dialog-id'].showModal();"
+        aria-controls="dialog-id"
+      >
+        <svg class="floppy__icon">
+          <use href="./svg/floppy.svg#floppy"></use>
         </svg>
-        <button
-          type="button"
-          onclick="window['dialog-id'].showModal();"
-          aria-controls="dialog-id"
-        >
-          <span class="button__text">Сохранить на память</span>
-        </button>
-      </div>
-    </footer>
+        <span class="button__text">Сохранить на память</span>
+      </button>
+    </div>
 
     <dialog id="dialog-id" class="dialog">
       <div class="dialog__content">
-        <svg class="icon" width="39" height="39">
-          <use xlink:href="#icon-disk"></use>
+        <svg class="floppy__icon" width="39" height="39">
+          <use href="./svg/floppy.svg"></use>
         </svg>
         <p class="dialog__text">Вставьте дискету, чтобы продолжить</p>
       </div>

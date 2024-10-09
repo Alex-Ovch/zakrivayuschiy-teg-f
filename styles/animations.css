@@ -12,3 +12,198 @@
 
 Кроме этого, не меняйте HTML переключателя тем. Его разметка также гарантирует работу своего скрипта.
 */
+
+@keyframes scale-heart {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes sparkle {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes arrowMove {
+  0% {
+    left: -20px; /* Текущий сдвиг */
+  }
+  100% {
+    left: -16px; /* Сдвиг на 4 пикселя правее */
+  }
+}
+
+/* Анимация кнопок меню */
+.theme-menu__button:hover,
+.theme-menu__button:focus {
+  opacity: 0.6;
+}
+.theme-menu__button:hover {
+  cursor: pointer;
+}
+
+.theme-menu__button:focus {
+  outline: none;
+}
+
+.theme-menu__button:disabled {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.theme-menu__button:disabled::before {
+  content: "▶";
+  position: absolute;
+  left: -20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 16px;
+  color: inherit;
+  opacity: 0.6;
+  animation: arrowMove 0.5s ease-in-out infinite alternate;
+}
+
+.theme-menu__button::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--color);
+  transform: translateX(-50%) scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.theme-menu__button:focus-visible::after {
+  transform: translateX(0) scaleX(1);
+}
+
+/* Плавная заливка сердца при наведении */
+.like-icon .core {
+  fill: transparent;
+  transition: fill 0.3s linear;
+}
+
+.like-icon .main-body {
+  fill: transparent;
+  transition: fill 0.3s linear 0.05s;
+}
+
+.like-icon:hover .core {
+  fill: var(--color);
+}
+
+.like-icon:hover .main-body {
+  fill: var(--color);
+}
+
+.like-icon:not(:hover) .core {
+  transition-delay: 0.03s;
+  fill: transparent;
+}
+
+.like-icon:not(:hover) .body {
+  transition-delay: 0s;
+  fill: transparent;
+}
+
+/* Плавная заливка сердца при нажатии */
+
+.heart:active .core {
+  fill: var(--spark-fill);
+  transition: fill 0.3s ease 0s;
+}
+
+.heart:active .main-body {
+  fill: var(--spark-fill);
+  transition: fill 0.3s ease 0.05s;
+}
+
+/* Ставим лайк */
+
+.like-icon.is-liked .core {
+  fill: var(--spark-fill);
+  transition: fill 0.3s ease 0s;
+}
+
+.like-icon.is-liked .main-body {
+  fill: var(--spark-fill);
+  transition: fill 0.3s ease 0.05s;
+}
+
+.like-icon.is-liked .contour {
+  fill: var(--spark-fill);
+  transition: fill 0.3s ease 0.06s;
+}
+
+/* Анимация масштабирования */
+
+.like-icon.is-liked .heart {
+  transform-origin: center center;
+  animation: scale-heart 0.3s ease-in 0.1s forwards;
+}
+
+/* Анимация искр */
+
+.like-icon.is-liked .sparks {
+  animation: sparkle 0.3s ease-in 0.3s forwards;
+}
+
+/* Перекрашивание контура обратно */
+
+.like-icon:not(.is-liked) .contour {
+  fill: var(--color);
+  transition: fill 0.1s linear;
+}
+
+/* Анимаця фокуса на иконке сердца */
+.card__icon-button:focus {
+  outline: none;
+}
+
+.card__icon-button:focus-visible {
+  outline: none;
+  box-shadow: inset 0 0 0 1px var(--color), 0 0 0 1px var(--color);
+  transition: box-shadow 0.3s ease;
+}
+
+/* Анимация фокуса кнопки like */
+.card__like-button:focus {
+  outline: none;
+  box-shadow: 2px 2px 0px var(--color);
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.card__like-button:hover {
+  cursor: pointer;
+}
+
+/* Анимация затемнения кнопки like */
+.card__like-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--color);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s ease-in-out;
+}
+
+.card__like-button:hover::before {
+  transform: scaleX(1);
+}

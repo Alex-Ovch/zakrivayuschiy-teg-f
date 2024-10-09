@@ -67,7 +67,7 @@
 }
 
 .header {
-  font-family: var(--font-accent);
+  font-family: var(--font-accent), fantasy;
   margin: 100px 0;
   padding-top: 120px;
   display: flex;
@@ -121,64 +121,11 @@
   transition: opacity 0.3s ease;
 }
 
-.theme-menu__button:hover,
-.theme-menu__button:focus {
-  opacity: 0.6;
-}
-.theme-menu__button:hover {
-  cursor: pointer;
-}
-
-.theme-menu__button:disabled {
-  opacity: 0.6;
-  pointer-events: none;
-}
-
-.theme-menu__button:disabled::before {
-  content: "▶";
-  position: absolute;
-  left: -20px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 16px;
-  color: inherit;
-  opacity: 0.6;
-  animation: arrowMove 0.5s ease-in-out infinite alternate;
-}
-
-@keyframes arrowMove {
-  0% {
-    left: -20px; /* Текущий сдвиг */
-  }
-  100% {
-    left: -16px; /* Сдвиг на 4 пикселя правее */
-  }
-}
-
-.theme-menu__button:focus {
-  outline: none;
-}
-
-.theme-menu__button::after {
-  content: ""; /* Псевдоэлемент без содержимого */
-  position: absolute; /* Позиционирование относительно кнопки */
-  bottom: -2px; /* Расположение снизу */
-  left: 0; /* Начальное положение по горизонтали */
-  width: 100%; /* Ширина псевдоэлемента */
-  height: 2px; /* Высота подчеркивания */
-  background-color: var(--color); /* Цвет подчеркивания */
-  transform: translateX(-50%) scaleX(0); /* Начальное масштабирование */
-  transition: transform 0.3s ease; /* Плавный переход для масштабирования */
-}
-
-.theme-menu__button:focus-visible::after {
-  transform: translateX(0) scaleX(1); /* Масштабируем псевдоэлемент по оси X */
-}
-
 .header__section {
   font-variation-settings: "wght" var(--font-weight-heading);
   padding: 4px 10px 6px;
   font-size: 18px;
+  border-bottom: 2px solid var(--color);
 }
 
 img {
@@ -188,149 +135,73 @@ img {
 }
 
 .image__container {
+  display: flex;
   position: relative;
 }
 
 .card__label {
-  font-family: var(--font-accent);
+  font-family: var(--font-accent), fantasy;
   font-size: 14px;
   position: absolute;
   top: 25px;
   right: 13px;
+  opacity: 50%;
   mix-blend-mode: hard-light;
+  text-shadow: 1px 1px 0 var(--bc-color), -1px -1px 0 var(--bc-color);
 }
 
-@supports (-webkit-text-stroke: 0.3px var(--border-color)) or
-  (text-stroke: 0.3px var(--border-color)) {
+@supports (-webkit-text-stroke: 1px var(--bc-color)) or
+  (text-stroke: 1px var(--bc-color)) {
   .card__label {
-    -webkit-text-stroke: 0.3px var(--border-color);
-    text-stroke: 0.3px var(--border-color); /* Для поддержки других браузеров */
+    text-shadow: none;
+    -webkit-text-stroke: 1px var(--bc-color);
+    text-stroke: 1px var(--bc-color); /* Для поддержки других браузеров */
   }
 }
 
 .article {
+  display: flex;
+  flex-direction: column;
+  gap: 27px;
   padding: 25px;
+  border-top: 2px solid var(--color);
 }
 
-p:first-child {
-  margin-bottom: 27px; /* Задайте нужный вам отступ */
+.like-icon {
+  width: inherit;
+  height: inherit;
 }
 
-.like {
+.sparks {
+  opacity: 0;
+}
+
+.card__button-container {
   display: flex;
   justify-content: end;
   align-items: center;
+  gap: 6px;
   margin: 0 25px 25px 25px;
   font-size: 14px;
 }
 
-.like-icon {
-  position: absolute;
-  left: -47px;
-  top: 0;
-  font-size: 14px;
+.card__icon-button {
   padding: 0;
   margin: 0;
-  height: 100%;
-  transition: outline 0.3s ease;
-}
-
-.like-icon:focus {
-  outline: none;
-}
-
-.like-icon:focus-visible {
-  outline: 2px solid var(--color);
+  width: 39px;
+  height: 36px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 1;
 }
 
 .card__like-button {
   position: relative;
   min-width: 130px;
-  padding: 12.5px 0 4px 0;
+  padding: 12px 0 5px 0;
   background-color: var(--bc-color);
   border: 2px solid var(--color);
-}
-
-.card__like-button:focus {
-  outline: none;
-  box-shadow: 2px 2px 0px var(--color);
-  transition: box-shadow 0.3s ease-in-out;
-}
-
-.card__like-button:hover {
-  cursor: pointer;
-}
-
-.card__like-button::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: var(--color);
-  transform: scaleX(0); /* Сжимаем элемент по X */
-  transform-origin: left; /* Точка начала анимации — слева */
-  transition: transform 0.5s ease-in-out; /* Плавная анимация */
-}
-
-.card__like-button:hover::before {
-  transform: scaleX(1); /* Расширяем элемент по оси X до полного размера */
-}
-
-.card__icon-button {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  margin-top: 2px;
-  margin-bottom: 100px;
-  padding: 15px;
-  width: 100%;
-  background-color: var(--bc-color);
-  border: 2px solid var(--color);
-  overflow: hidden;
-  max-width: 306px;
-}
-
-@media (min-width: 376px) {
-  .card__icon-button {
-    flex-direction: row;
-    max-width: 335px;
-  }
-  .icon {
-    width: 21px;
-    height: 21px;
-  }
-}
-
-.card__icon-button:focus-within {
-  outline: none;
-  box-shadow: 2px 2px 0px var(--color);
-  transition: box-shadow 0.3s ease-in-out;
-}
-
-.card__icon-button:hover {
-  cursor: pointer;
-}
-
-.card__icon-button::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: var(--color);
-  transform: scaleX(0); /* Сжимаем элемент по X */
-  transform-origin: left; /* Точка начала анимации — слева */
-  transition: transform 0.5s ease-in-out; /* Плавная анимация */
-  z-index: 0;
-}
-
-.card__icon-button:hover::before {
-  transform: scaleX(1); /* Расширяем элемент по оси X до полного размера */
 }
 
 .button__text {
@@ -340,109 +211,25 @@ p:first-child {
   position: relative;
   color: var(--text-color);
   background-color: transparent;
-  font-family: var(--font-accent);
+  font-family: var(--font-accent), fantasy;
   font-size: 14px;
   mix-blend-mode: difference;
   z-index: 1;
 }
 
-.card__icon-button:hover .button__text {
-  transition: color 0.5s ease-in-out; /* Плавная смена цвета текста */
+.floppy__icon {
+  position: relative;
+  width: 28px;
+  height: 28px;
+  color: var(--color);
+  background-color: transparent;
+  /* mix-blend-mode: difference; */
+  z-index: 1;
 }
 
-.icon {
-  mix-blend-mode: difference; /* Применяем режим смешивания к иконке */
-  z-index: 1; /* Иконка тоже должна быть над псевдоэлементом */
-  color: var(--text-color);
-}
-
-.sparks {
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-
-.heart:hover .core {
-  fill: var(--color); /* Заливка сердцевины акцентным цветом */
-  transition: fill 0.3s ease 0s; /* Сразу же при наведении */
-}
-
-.heart:hover .main-body {
-  fill: var(--color); /* Заливка основного тела акцентным цветом */
-  transition: fill 0.3s ease 0.05s; /* С задержкой 0.05s */
-}
-
-.heart:not(:hover) .core {
-  fill: none; /* Прозрачная сердцевина при уходе */
-  transition: fill 0.3s ease 0.03s; /* С задержкой 0.03s */
-}
-.heart:not(:hover) .main-body {
-  fill: none; /* Прозрачное основное тело при уходе */
-  transition: fill 0.3s ease 0s; /* Без задержки */
-}
-
-.heart:active .core {
-  fill: var(--spark-fill); /* Заливка сердцевины акцентным цветом */
-  transition: fill 0.3s ease 0s; /* Сразу же при наведении */
-}
-
-.heart:active .main-body {
-  fill: var(--spark-fill); /* Заливка основного тела акцентным цветом */
-  transition: fill 0.3s ease 0.05s; /* С задержкой 0.05s */
-}
-
-.like-icon.is-liked .core {
-  fill: var(--spark-fill); /* Заливка сердцевины красным */
-  transition: fill 0.3s ease 0s; /* Плавное изменение при клике */
-}
-
-.like-icon.is-liked .main-body {
-  fill: var(--spark-fill); /* Заливка основного тела красным */
-  transition: fill 0.3s ease 0.06s; /* С задержкой 0.06s */
-}
-
-.like-icon.is-liked .contour {
-  fill: var(--spark-fill); /* Заливка контура красным */
-  transition: fill 0.3s ease 0.12s; /* С задержкой 0.12s */
-}
-
-/* Анимация для масштабирования */
-.like-icon.is-liked {
-  animation: scale-heart 0.3s ease-in forwards; /* Масштабирование */
-}
-
-.like-icon.is-liked .sparks {
-  animation: sparkle 0.3s ease-in forwards; /* Анимация искр */
-}
-
-.like-icon:not(.is-liked) .contour {
-  fill: var(--color); /* Возвращение к исходному цвету */
-  transition: fill 0.1s linear; /* Быстрое возвращение без задержек */
-}
-
-@keyframes scale-heart {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.5);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
-@keyframes sparkle {
-  0%,
-  100% {
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
-}
-
+/* Окно с диалогом */
 .dialog {
-  font-family: var(--font-accent);
+  font-family: var(--font-accent), fantasy;
   max-width: 341px;
   padding: 30px;
   background-color: var(--bc-color);
@@ -469,7 +256,7 @@ p:first-child {
   justify-content: left;
 }
 
-dialog .icon {
+dialog .floppy__icon {
   width: 100%;
 }
 
@@ -479,6 +266,7 @@ dialog .icon {
   border: 2px solid var(--color);
 }
 
+/* Фильты для картинок */
 .grayscale {
   filter: grayscale(100%);
 }
