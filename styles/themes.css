@@ -51,8 +51,8 @@
 @media (prefers-color-scheme: dark) {
   :root {
     /* Дублируем переменные темной темы */
-    --font-weight-body: 400;
-    --font-weight-heading: 700;
+    --font-weight-body: 465;
+    --font-weight-heading: 785;
     --text-color: #00cc14;
     --bc-color: #000;
     --color: #00cc14;
