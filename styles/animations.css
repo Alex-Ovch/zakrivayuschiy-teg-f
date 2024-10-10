@@ -180,18 +180,18 @@
 }
 
 /* Анимация фокуса кнопки like */
-.card__like-button:focus {
+.animation__button:focus {
   outline: none;
   box-shadow: 2px 2px 0px var(--color);
   transition: box-shadow 0.3s ease-in-out;
 }
 
-.card__like-button:hover {
+.animation__button:hover {
   cursor: pointer;
 }
 
 /* Анимация затемнения кнопки like */
-.card__like-button::before {
+.animation__button::before {
   content: "";
   position: absolute;
   top: 0;
@@ -204,6 +204,6 @@
   transition: transform 0.5s ease-in-out;
 }
 
-.card__like-button:hover::before {
+.animation__button:hover::before {
   transform: scaleX(1);
 }
